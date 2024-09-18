@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busy-box
+  labels:
+    app: busy-box
+spec:
+  containers:
+  - name: busy-box
+    image: busybox
+    ports:
+      - name: busy-box-port
+        containerPort: 80
+

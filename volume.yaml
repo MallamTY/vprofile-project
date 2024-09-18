@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-db
+spec:
+  os: { name: linux }
+  nodeSelector:
+    kubernetes.io/os: linux
+  containers:
+  - name: mysql
+    image: mysql:5.7
+    volumeMounts:
+    - mountPath: /var/lib/mysql
+      name: dbvolume
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: something
+  volumes:
+  - name: dbvolume
+    hostPath:
+      path: /data
+      type: DirectoryOrCreate
